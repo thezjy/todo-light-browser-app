@@ -1,8 +1,8 @@
+import { generateKeyBetween } from 'fractional-indexing'
 import { nanoid } from 'nanoid'
 import React, { useState } from 'react'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { useSubscribe } from 'replicache-react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { generateKeyBetween } from 'fractional-indexing'
 
 export default function TodoApp({ rep }) {
   const todos =
@@ -28,7 +28,7 @@ export default function TodoApp({ rep }) {
   const onDragEnd = (result) => {
     if (result.destination != null) {
       const {
-        draggableId: id,
+        draggableId: clientSideID,
         source: { index: sourceIndex },
         destination: { index: destinationIndex },
       } = result
@@ -47,7 +47,11 @@ export default function TodoApp({ rep }) {
                 getOrderByIndex(destinationIndex - 1),
                 getOrderByIndex(destinationIndex),
               )
-        rep.mutate.updateTodoOrder({ id, order })
+
+        const [key, { id }] = todos.find(
+          (todo) => todo[1].clientSideID === clientSideID,
+        )
+        rep.mutate.updateTodoOrder({ id, order, clientSideID })
       }
     }
   }
@@ -63,7 +67,7 @@ export default function TodoApp({ rep }) {
             const order = generateKeyBetween(lastTodo?.order ?? null, null)
 
             rep.mutate.createTodo({
-              id: nanoid(),
+              clientSideID: nanoid(),
               content,
               order,
               completed: false,
@@ -91,7 +95,11 @@ export default function TodoApp({ rep }) {
             >
               {todos.map(([_key, todo], index) => {
                 return (
-                  <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                  <Draggable
+                    key={todo.clientSideID}
+                    draggableId={todo.clientSideID}
+                    index={index}
+                  >
                     {(draggableProvided, draggableSnapshot) => (
                       <li
                         {...draggableProvided.draggableProps}
@@ -116,6 +124,7 @@ export default function TodoApp({ rep }) {
                                 rep.mutate.updateTodoCompleted({
                                   id: todo.id,
                                   completed: e.target.checked,
+                                  clientSideID: todo.clientSideID,
                                 })
                               }}
                             />
@@ -123,7 +132,10 @@ export default function TodoApp({ rep }) {
 
                           <button
                             onClick={() => {
-                              rep.mutate.deleteTodo({ id: todo.id })
+                              rep.mutate.deleteTodo({
+                                id: todo.id,
+                                clientSideID: todo.clientSideID,
+                              })
                             }}
                             className="flex items-center p-2 font-mono text-base leading-4"
                           >
