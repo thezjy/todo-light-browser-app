@@ -29,10 +29,6 @@ export default function App() {
       pushURL: `${api_endpoint}/replicache-push?${searchString}`,
       pullURL: `${api_endpoint}/replicache-pull?${searchString}`,
       useMemstore: true,
-      wasmModule: import.meta.env.DEV
-        ? '/replicache.dev.wasm'
-        : '/replicache.wasm',
-
       mutators: {
         async createTodo(tx, { id, completed, content, order }) {
           await tx.put(`todo/${id}`, {
