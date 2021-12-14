@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./index.html', './src/**/*.{js,jsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'media',
   theme: {
     fontFamily: {
       sans: 'Arima Madurai, cursive',
