@@ -28,7 +28,6 @@ export default function App() {
     const rep = new Replicache({
       pushURL: `${api_endpoint}/replicache-push?${searchString}`,
       pullURL: `${api_endpoint}/replicache-pull?${searchString}`,
-      useMemstore: true,
       mutators: {
         async createTodo(tx, { id, completed, content, order }) {
           await tx.put(`todo/${id}`, {

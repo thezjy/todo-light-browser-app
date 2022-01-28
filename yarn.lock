@@ -837,11 +837,6 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-flatbuffers@^2.0.3:
-  version "2.0.4"
-  resolved "https://registry.npmmirror.com/flatbuffers/download/flatbuffers-2.0.4.tgz#034456e29ec480de48bad34f7fc18c03f20c9768"
-  integrity sha1-A0RW4p7EgN5IutNPf8GMA/IMl2g=
-
 fraction.js@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmmirror.com/fraction.js/download/fraction.js-4.1.2.tgz#13e420a92422b6cf244dff8690ed89401029fbe8"
@@ -926,11 +921,6 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
-
-hash-wasm@^4.9.0:
-  version "4.9.0"
-  resolved "https://registry.nlark.com/hash-wasm/download/hash-wasm-4.9.0.tgz#7e9dcc9f7d6bd0cc802f2a58f24edce999744206"
-  integrity sha1-fp3Mn31r0MyALypY8k7c6Zl0QgY=
 
 hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
@@ -1378,13 +1368,10 @@ replicache-react@^2.5.0:
   resolved "https://registry.npmmirror.com/replicache-react/download/replicache-react-2.5.0.tgz#1cc6774637a1cd22cb683cc7610860773cafe9a4"
   integrity sha512-7p8dtbriBYwFuU2AdVY0y074fE1uLMlqc6otYqn0i0jVWNxA3YqI9PCl2b9/Qo+KolNkkGeXRttiMNmRhli/Nw==
 
-replicache@^8.0.3:
-  version "8.0.3"
-  resolved "https://registry.npmmirror.com/replicache/download/replicache-8.0.3.tgz#b54d26cc8dcb734d50fa6dd70327857d3c682ce9"
-  integrity sha512-Mqt44oFlXEw4IfqE5rOZrB6Y1/qqkrT3dlW58FiiRYjItv5iEFpwprUR09ni+VqUZVXijXIetoZVYWKbqHzmYw==
-  dependencies:
-    flatbuffers "^2.0.3"
-    hash-wasm "^4.9.0"
+replicache@9.0.0-beta.0:
+  version "9.0.0-beta.0"
+  resolved "https://registry.npmmirror.com/replicache/download/replicache-9.0.0-beta.0.tgz#9c7993353c26c63d722b6b1634c16c6e455e32af"
+  integrity sha512-wBeFfRrNxYdKSMl0yS6LVXH6Phm7eLilJZyo90mefmdSs+wDZwEaMxBQk14DdKi0ZHgeWcU+o8qj6IJ4ib/UDg==
 
 resolve-alpn@^1.0.0:
   version "1.2.1"
