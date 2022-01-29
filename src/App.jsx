@@ -26,6 +26,7 @@ export default function App() {
     const searchString = searchParams.toString()
 
     const rep = new Replicache({
+      name: listID,
       pushURL: `${api_endpoint}/replicache-push?${searchString}`,
       pullURL: `${api_endpoint}/replicache-pull?${searchString}`,
       mutators: {
